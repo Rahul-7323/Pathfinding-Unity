@@ -10,7 +10,7 @@ public class Testing : MonoBehaviour
     private PathFinding pathFinding;
 
     private void Start() {
-        this.pathFinding = new PathFinding(6, 6);
+        this.pathFinding = new PathFinding(16, 10);
     }    
 
     private void Update() {
@@ -30,6 +30,12 @@ public class Testing : MonoBehaviour
             Vector3 mouseWorldPosition = UtilsClass.GetMouseWorldPosition();
             PathNode node = pathFinding.GetGrid().GetGridObject(mouseWorldPosition);
             node.isWalkable = !node.isWalkable;
+            if(!node.isWalkable){
+                node.showObstacle();
+            }
+            else{
+                node.hideObstacle();
+            }
         }
     }
 }
