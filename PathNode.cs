@@ -6,18 +6,24 @@ using UnityEngine;
 public class PathNode {
 
     private Grid<PathNode> grid;
-    private int x;
-    private int y;
+    public int x;
+    public int y;
     public int gCost;
     public int hCost;
     public int fCost;
-
+    public bool isWalkable;
     public PathNode cameFromNode;
 
     public PathNode(Grid<PathNode> grid, int x, int y) {
         this.x = x;
         this.y = y;
         this.grid = grid;
+        this.isWalkable = true;
+        this.gCost = int.MaxValue;
+    }
+
+    public void CalculateFCost(){
+        fCost = gCost + hCost;
     }
 
     public override string ToString()

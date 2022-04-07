@@ -52,12 +52,18 @@ public class Grid<TGridObject> {
             debugTextArray[eventArgs.x, eventArgs.y].text = gridArray[eventArgs.x, eventArgs.y].ToString();
         };
     }
+    public int GetWidth(){
+        return width;
+    }
 
-    private Vector3 GetWorldPosition(int x, int y){
+    public int GetHeight(){
+        return height;
+    }
+    public Vector3 GetWorldPosition(int x, int y){
         return new Vector3(x, y) * this.cellSize + originPosition; 
     }
 
-    private void GetXY(Vector3 worldPosition, out int x, out int y){
+    public void GetXY(Vector3 worldPosition, out int x, out int y){
         x = Mathf.FloorToInt((worldPosition - originPosition).x / cellSize);
         y = Mathf.FloorToInt((worldPosition - originPosition).y / cellSize);
     }
